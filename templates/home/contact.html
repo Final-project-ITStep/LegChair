@@ -1,0 +1,100 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+{% load static %}
+
+    <!-- breadcrumb start-->
+    <section class="breadcrumb breadcrumb_bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="breadcrumb_iner">
+                        <div class="breadcrumb_iner_item">
+                            <h2>{{ page_title }}</h2>
+                            <p><a href="/">Головна</a> <span>-</span>Контакти</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb start-->
+
+
+    <div class="container map-section">
+        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2539.6800279236395!2d30.511085535628155!3d50.465682799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce6afac01853%3A0x5f43a9918b16d0be!2z0LLRg9C70LjRhtGPINCl0L7RgNC40LLQsCwgMTHQkCwg0JrQuNGX0LIsIDA0MDcx!5e0!3m2!1suk!2sua!4v1667828479496!5m2!1suk!2sua" frameborder="0" allowfullscreen=""></iframe>
+    </div>
+    <div class="container mt-10">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="contact-title">Залишити відгук</h2>
+        </div>
+        <div class="col-lg-8">
+          <form role="form" action="/home/contact" method="post" id="contactForm" class="form-contact contact_form">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'Введіть тему повідомлення'" placeholder='Введіть тему повідомлення'>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Введіть повідомлення'"
+                    placeholder='Введіть повідомлення'></textarea>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <input class="form-control" name="name" id="name" type="text" onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'Введіть Ваше ім\'я'" placeholder="Введіть Ваше ім\'я">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <input class="form-control" name="email" id="email" type="email" onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'Введіть E-mail'" placeholder='Введіть E-mail'>
+                </div>
+              </div>
+            </div>
+            <div class="mt-3">
+              {% if result %}
+                <div class="sent-message">Повідомлення надіслано успішно. Дякуємо Вам!</div>
+              {% elif result is False %}
+                <div class="error-message">Щось пішло не так :( Перевірте введені дані.</div>
+              {% endif %}
+            </div>
+            <div class="form-group mt-3">
+              <button type="submit" id="submit" class="btn_3 button-contactForm">Надіслати</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-4">
+            <div class="media contact-info">
+              <span class="contact-info__icon"><i class="ti-home"></i></span>
+              <div class="media-body">
+                <h3>11, вул. Хорива</h3>
+                <p>Київ, 01001</p>
+              </div>
+            </div>
+            <div class="media contact-info">
+              <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+              <div class="media-body">
+                <h3>+38 (063) 380 2299</h3>
+                <p>Понеділок - Субота<br/>09:00 - 18:00</p>
+              </div>
+            </div>
+            <div class="media contact-info">
+              <span class="contact-info__icon"><i class="ti-email"></i></span>
+              <div class="media-body">
+                <h3>support@legchair.ua</h3>
+                <p>Цілодобово!</p>
+              </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+
+{% endblock %}
