@@ -1,0 +1,5 @@
+0   home/index
+1   store/index
+2   news/index
+3   home/contact
+

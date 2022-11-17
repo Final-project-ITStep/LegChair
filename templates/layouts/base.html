@@ -1,0 +1,57 @@
+<!doctype html>
+{% load static %}
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LegChair - {{ page_title }}</title>
+    <link rel="icon" href="{% static 'img/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/all.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <script src="{% static 'js/jquery-1.12.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery.cookie.js' %}"></script>
+</head>
+<body>
+    <!--::header part start::-->
+    {% include 'frag/header.html' %}
+    <!-- Header part end-->
+
+    <!-- CONTENT PLACEHOLDER -->
+    <input type="hidden" id="page-name" value="{{ page }}">
+    {% block content %}
+
+    {% endblock content %}
+    <!-- /CONTENT PLACEHOLDER -->
+
+    <!--::footer_part start::-->
+    {% include 'frag/footer.html' %}
+    <!--::footer_part end::-->
+
+    <!-- jquery plugins here-->
+
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'js/swiper.min.js' %}"></script>
+    <script src="{% static 'js/masonry.pkgd.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+    <script src="{% static 'js/contact.js' %}"></script>
+    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'js/jquery.form.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
+
+</html>
