@@ -23,4 +23,14 @@ $(document).ready(() => {
         $('body,html').animate({scrollTop: 0}, 400);
         return false;
     });
+
+    // Cart count
+    let count = 4;
+    $('.main_menu .cart i').addClass('g-count').attr('data-content', count);
+    $('.shopping-cart-count span#c-count').text(count);
+    // Delete cart item
+    $('button.delete').click((e) => {
+    
+        console.log($(e.Target).parent().attr());
+    })
 })
