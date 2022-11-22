@@ -13,31 +13,37 @@
                     <div class="login_part_form">
                         <div class="login_part_form_iner">
                             <h3>Вперше у нас? <br> Зареєструйтесь <i class="fa fa-hand-point-down"></i></h3>
-                            <form class="row contact_form" id="reg-form" method="post" action="accont/logon" onsubmit="return true">
+                            <form class="row contact_form" id="reg-form" method="post" action="/accont/signup" onsubmit="return true">
                                 {% csrf_token %}
                                 <div class="col-md-6 form-group p_star">
-                                    <input type="text" class="form-control" id="f-name" name="f-name" 
+                                    <input type="text" class="form-control" id="f_name" name="f_name" 
                                     placeholder="Ім'я *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ім\'я *'" required/>
+                                    <span id="error-fname" class="error text-start"></span>
                                 </div>
                                 <div class="col-md-6 form-group p_star">
-                                    <input type="text" class="form-control" id="l-name" name="l-name" 
+                                    <input type="text" class="form-control" id="l_name" name="l_name" 
                                     placeholder="Прізвище" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Прізвище'" />
+                                    <span id="error-lname" class="error text-start"></span>
                                 </div>
                                 <div class="col-md-6 form-group p_star">
                                     <input type="password" class="form-control" id="pwd1" name="pwd1"
                                     placeholder="Пароль *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Пароль *'" required/>
+                                    <span id="error-pwd1" class="error text-start"></span>
                                 </div>
                                 <div class="col-md-6 form-group p_star">
                                     <input type="password" class="form-control" id="pwd2" name="pwd2"
                                     placeholder="Повторіть пароль *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Повторіть пароль *'" required/>
+                                    <span id="error-pwd2" class="error text-start"></span>
                                 </div>
                                 <div class="col-md-12 form-group p_star">
                                     <input type="text" class="form-control" id="number" name="number" 
-                                    placeholder="Номер телефону *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Номер телефону *'" required/>
+                                    placeholder="Телефон: (xxx) xxx-xxxx" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Телефон: (xxx) xxx-xxxx'" required/>
+                                    <span id="error-number" class="error text-start"></span>
                                 </div>
                                 <div class="col-md-12 form-group p_star">
                                     <input type="email" class="form-control" id="email" name="email" 
                                     placeholder="E-mail *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mail *'" required/>
+                                    <span id="error-email" class="error text-start"></span>
                                 </div>                                
                                 <div class="col-md-12 form-group">
                                     <button type="submit" value="submit" class="btn_3">Реєстрація</button>
@@ -52,7 +58,7 @@
                             <h2>Вже маєте обліковий запис?</h2>
                             <p>There are advances being made in science and technology
                                 everyday, and a good example of this is the</p>
-                            <a href="/account/login" class="btn_3">Вхід</a>
+                            <a href="/account/signin" class="btn_3">Вхід</a>
                         </div>
                     </div>
                 </div>
@@ -61,5 +67,56 @@
         </div>
     </section>
     <!--================logon_part end =================-->
+    <script src="{% static 'js/mask-phone-number.js' %}"></script>
+<script>
+$(document).ready(function(){
+    $('#number').usPhoneFormat({
+        format: '(xxx) xxx-xxxx',
+    });
+
+    (function($) {
+        "use strict";
+        // validate contactForm form
+        $(function() {
+            $('#reg-form').validate({
+                rules: {
+                    f_name: { required: true, minlength: 2 },
+                    l_name: { required: false, minlength: 2 },
+                    pwd1: { required: true,  minlength: 8 },
+				    pwd2: { required: true, minlength: 8, equalTo: "#pwd1" },
+                    number: { required: true, minlength: 10 },
+                    email: { required: true, email: true }
+                },
+                messages: {
+                    f_name: {
+                        required: "у вас же є <strong>Ім\'я</strong>, чи не так?",
+                        minlength: "Не менше ніж <strong>2</strong> літери"
+                    },
+                    l_name: {
+                        minlength: "Не менше ніж <strong>2</strong> літери"
+                    },
+                    number: {
+                        required: "Ну ж, у вас є номер телефону, чи не так?",
+                        minlength: "Формат: (xxx) xxx-xxxx"
+                    },
+                    email: {
+                        required: "намає E-mail - не буде спілкування"
+                    },
+                    pwd1: { 
+                        required: "не можете придумати Пароль?",
+					    minlength: "Пароль повинен містити <strong>8</strong> символів"
+                    },
+                    pwd2: {
+                        required: "не можете пригадати щойно введений Пароль?",
+                        minlength: "Пароль повинен містити <strong>8</strong> символів",
+                        equalTo: "Будь ласка, введіть такий же самий пароль"
+                    }
+                }
+            })
+        })
+        
+    })(jQuery)
+})        
+</script>
     
 {% endblock content %}

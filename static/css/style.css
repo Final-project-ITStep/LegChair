@@ -5446,6 +5446,10 @@ ul {
     float: right;
     text-transform: capitalize;
 }
+.login_part label.error {
+    font-size: 12px;
+    color: #ff3368;
+}
 
 /* line 1980, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_product.scss */
 .lSSlideOuter .lSPager.lSGallery img {

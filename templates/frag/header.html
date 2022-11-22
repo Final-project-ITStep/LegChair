@@ -27,8 +27,8 @@
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDD">
                                         {% if not user.is_authenticated %}
-                                            <li><a class="dropdown-item" href="/account/login">Вхід</a></li>
-                                            <li></li><a class="dropdown-item" href="/account/logon">Реєстрація</a></li>
+                                            <li><a class="dropdown-item" href="/account/signin">Вхід</a></li>
+                                            <li></li><a class="dropdown-item" href="/account/signup">Реєстрація</a></li>
                                         {% else %}
                                             <li><a class="dropdown-item" href="/account/profile">Профайл</a></li>
                                             <li><a class="dropdown-item" href="/account/exit">Вихід</a></li>
