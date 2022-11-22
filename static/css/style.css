@@ -2292,7 +2292,7 @@ ul {
 }
 
 /* line 130, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
-.main_menu .cart i:after {
+.main_menu .cart i.g-count:after { 
     position: absolute;
     border-radius: 50%;
     background-color: #f13d80;
@@ -2300,7 +2300,7 @@ ul {
     height: 14px;
     right: -8px;
     top: -8px;
-    content: "5";
+    content: attr(data-content);
     text-align: center;
     line-height: 15px;
     font-size: 10px;
@@ -7884,10 +7884,9 @@ h6 {
   }
   */
 .shopping-cart {
-    margin: 20px 0;
     float: right;
     background: white;
-    width: 320px;
+    width: 300px;
     position: relative;
     border-radius: 3px;
     padding: 20px;
@@ -7900,60 +7899,43 @@ h6 {
         float: right;
 }
 .shopping-cart-items {
-    padding-top: 20px;
+    padding: 10px 0;
+   /* max-height: 200px;
+    overflow-y: scroll;*/
 }
-.shopping-cart-items li {
-    margin-bottom: 18px;
-}
-.shopping-cart-items img {
+.product-widget { margin-bottom: 10px; }
+.product-widget:last-child {margin-bottom: 0;}
+.product-widget > a:hover { background-color: #ecfdff; }
+.product-widget > a > div {padding: 0;}
+.product-widget img {
     float: left;
-    margin-right: 12px;
+    margin: 10px;
     width: 40px;
     border-radius: 50%;
 }
-.shopping-cart-items .item-name {
+.product-widget .item-name {
     display: block;
     padding-top: 10px;
     font-size: 16px;
+    color: #1a1a1a;
 }
-.shopping-cart-items .item-price {
-    margin-right: 8px;
+.product-widget .item-price {
+    color: darkblue;
 }
-.shopping-cart-items .item-quantity {
+.product-widget .item-quantity {
     color: gray;
 }
-.shopping-cart:after {
-bottom: 100%;
-      left: 89%;
-      border: solid transparent;
-      content: " ";
-      height: 0;
-      width: 0;
-      position: absolute;
-      pointer-events: none;
-      border-bottom-color: white;
-      border-width: 8px;
-      margin-left: -8px;
-}
-  
-.cart-icon {
-    color: #515783;
-    font-size: 24px;
-    margin-right: 7px;
-    float: left;
-}
-.button {
-    color:white;
+.product-widget { position: relative;}
+.product-widget .delete {
+    position: absolute;
+    top: 2px;
+    right: -12px;
+    height: 14px;
+    width: 14px;
     text-align: center;
-    padding: 12px;
-    text-decoration: none;
-    display: block;
-    border-radius: 3px;
-    font-size: 16px;
-    margin: 25px 0 15px 0;
+    font-size: 10px;
+    padding: 0;
+    background: #ff3368;
+    border: none;
+    color: #FFF;
 }
-.clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
