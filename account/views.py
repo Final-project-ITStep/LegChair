@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 
@@ -26,7 +26,8 @@ def signin(request):
 
 
 def exit(request):
-    return render(request, 'account/exit.html', {})
+    logout(request)
+    return redirect('/')
 
 
 def profile(request):

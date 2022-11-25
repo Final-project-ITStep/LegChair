@@ -2924,7 +2924,7 @@ ul {
 }
 
 /* line 82, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_product_list.scss */
-.single_product_item .single_product_text a {
+.single_product_item .single_product_text a.add_cart {
     color: #ff3368;
     text-transform: uppercase;
     font-size: 18px;
@@ -2956,7 +2956,7 @@ ul {
 }
 
 /* line 109, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_product_list.scss */
-.single_product_item:hover a {
+.single_product_item:hover a.add_cart {
     opacity: 1;
     visibility: visible;
 }
