@@ -19,11 +19,21 @@ def confirm(request):
 
 
 def signin(request):
-    return render(request, 'account/signin.html', {
-        'page_title': 'Вхід',
-        'page': 4
-    })
-
+    if request.method == 'GET':
+        return render(request, 'account/signin.html', {
+            'page_title': 'Вхід',
+            'page': 4
+        })
+    elif request.method == 'POST':
+        _login = request.POST.get('name')
+        _pass = request.POST.get('password')
+        check_user = authenticate(request, username=_login, password=_pass)
+        if check_user is None:
+            msg ='Користувач на знайдений!'
+        else:
+            msg ='Ви успішно авторизовані!'
+            login(request, check_user)
+        return redirect('/')
 
 def exit(request):
     logout(request)

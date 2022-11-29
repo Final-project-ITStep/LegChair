@@ -33,4 +33,5 @@ $(document).ready(() => {
     
         console.log($(e.Target).parent().attr());
     })
+
 })
