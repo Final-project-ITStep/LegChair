@@ -74,7 +74,7 @@
 
                         <aside class="left_widgets p_filter_widgets price_rangs_aside">
                             <div class="l_w_title">
-                                <h3>Price Filter</h3>
+                                <h3>Ціна</h3>
                             </div>
                             <div class="widgets_inner">
                                 <div class="range_item">
@@ -82,11 +82,11 @@
                                     <input type="text" class="js-range-slider" value="" />
                                     <div class="d-flex">
                                         <div class="price_text">
-                                            <p>Price :</p>
+                                            <p>від</p>
                                         </div>
                                         <div class="price_value d-flex justify-content-center">
                                             <input type="text" class="js-input-from" id="amount" readonly />
-                                            <span>to</span>
+                                            <span>до</span>
                                             <input type="text" class="js-input-to" id="amount" readonly />
                                         </div>
                                     </div>
@@ -142,7 +142,10 @@
                                 <div class="single_product_text">
                                     <h4>{{ p.name }}</h4>
                                     <h3>{{ p.price }}</h3>
-                                    <a href="#" class="add_cart">+ до Кошика<i class="ti-heart"></i></a>
+                                    <div class="cart-wish text-center">
+                                        <button class="add_cart" value="{{ p.id }}"><i class="fas fa-cart-plus"></i></button>
+                                        <button class="add_wish" value="{{ p.id }}"><i class="ti-heart"></i></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -185,7 +188,10 @@
                 </div>
             </div>
         </div>
+        <!-- Modal 1-->
+        {% include 'store/modal1.html' %}
+        <!--/End Modal 1 -->
     </section>
+    <script src="{% static 'js/store.js' %}"></script>
     <!--================End Category Product Area =================-->
-
 {% endblock %}
