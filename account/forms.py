@@ -3,9 +3,19 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 class SignUpForm(UserCreationForm):
-    first_name = forms.CharField(max_length=50, required=True, label="Ім'я*")
-    last_name = forms.CharField(max_length=50, required=False, label='Прізвище')
-    email = forms.EmailField(max_length=100, required=True, label='E-mail*')
+    first_name = forms.CharField(
+        max_length=50, 
+        label="Ім'я*"
+    )
+    last_name = forms.CharField(
+        max_length=50, 
+        label='Прізвище'
+    )
+    email = forms.EmailField(
+        max_length=100, 
+        required=True, 
+        label='E-mail*'
+    )
     password1 = forms.CharField(
         label='Пароль*',
         strip=False,

@@ -5453,7 +5453,7 @@ ul {
     float: right;
     text-transform: capitalize;
 }
-.login_part label.error {
+.login_part label.error, .login_part span.error {
     font-size: 12px;
     color: #ff3368;
 }

@@ -52,31 +52,42 @@
             format: 'xxx-xxx-xxxx',
         });
 
-        $('#id_email').on('change', (e) => {
-            e.preventDefault();
+        $('#id_email, #id_username').keyup((e) => {
             var whattocheck = e.target.id === 'id_username' ? 'username' : 'email';
-            console.log(whattocheck + ': ' + e.target.value);
-            $.ajax({
-                type: 'GET',
-                url: '/account/checkinput',
-                data: {"whattocheck": whattocheck},
-                dataType: 'json',
-                success: (data) => {
-                    if (data.valid) {
-                        if (whattocheck == 'username') {
-                            alert("You cannot create a USERNAME with same nick name");
+            var input_val = e.target.value;
+            // console.log(whattocheck + ': ' + input_val);
+            if (input_val != '') {
+                $.ajax({
+                    type: 'GET',
+                    url: '/account/checkinput',
+                    data: {'whattocheck': whattocheck, 'input_val': input_val},
+                    dataType: 'json',
+                    success: (data) => {
+                        if (data.valid) {
+                            // console.log(data);
+                            if (whattocheck == 'username') {
+                                // alert("You cannot create a USERNAME with same nick name");
+                                $('<span class="error">Такий номер вже існує. Введіть інший.</span>')
+                                    .insertAfter('#id_' + whattocheck);
+                            } else {
+                                // alert("E-mail allready exist! Try another one");
+                                $('<span class="error">Такий E-mail вже існує. Введіть інший.</span>')
+                                    .insertAfter('#id_' + whattocheck);
+                            }
+                            $('#id_' + whattocheck).val("").focus();
                         } else {
-                            alert("E-mail allready exist! Try another one");
+                            $('span.error').remove();
+                            // console.log('User or E-mail is NEW!' + data.valid)
                         }
-                        $('#' + whattocheck).val("").focus();
-                    } else {
-                        console.log('User or E-mail is NEW!' + data.valid)
+                    },
+                    error: (data) => {
+                        $('span.error').remove();
+                        console.log(data.responseJSON.errors)
                     }
-                },
-                error: (data) => {
-                    console.log(data.responseJSON.errors)
-                }
-            });
+                });
+            } else {
+                $(".username_error").remove();
+            }
         });
 
         (function($) {
