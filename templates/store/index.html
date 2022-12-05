@@ -138,6 +138,13 @@
                         {% for p in paginate_products %}
                         <div class="col-lg-4 col-sm-6">
                             <div class="single_product_item">
+                                <div class="wish-div">
+                                    <div class="wishlist cursor-pointer">
+                                        <span>
+                                            <span class="icon-lg ti-heart"></span>
+                                        </span>
+                                    </div>
+                                </div>
                                 <a href="#"><img src="../media/{{ p.photo }}" alt=""></a>
                                 <div class="single_product_text">
                                     <h4>{{ p.name }}</h4>
@@ -193,5 +200,30 @@
         <!--/End Modal 1 -->
     </section>
     <script src="{% static 'js/store.js' %}"></script>
+    <style>
+        .wish-div {
+            position: absolute;
+            top: 4.6 rem;
+            right: 1.6 rem;
+            z-index: 2;
+        }
+        .wish-div .wishlist {
+            background-color: var(--color-white);
+            border-radius: 50%;
+        }
+        .cursor-pointer {
+            cursor: pointer!important;
+        }
+        .wish-div .icon-lg {
+            display: flex;
+            width: 4 rem;
+            height: 4 rem;
+            border: 1px solid var(--color-gray-90);
+            border-radius: 50%;
+            color: var(--color-very-light-gray);
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
     <!--================End Category Product Area =================-->
 {% endblock %}
