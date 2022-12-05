@@ -1,0 +1,16 @@
+{% autoescape off %}
+
+
+<p>Вітаємо, {{ user }}</p>
+<hr/>
+<h3>Для підтвердження реєстрації перейдіть за посиланням:</h3>
+<div>
+    <a href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}">
+        http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+    </a>
+</div>
+<hr/>
+<p>З повагою, <br/>Адміністрація сайту LegChair.</p>
+
+
+{% endautoescape %}
