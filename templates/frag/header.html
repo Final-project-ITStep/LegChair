@@ -28,8 +28,8 @@
                                     <input type="hidden" id="user_id" value="{{ user.id }}">
                                     <ul class="dropdown-menu" aria-labelledby="navbarDD">
                                         {% if not user.is_authenticated %}
-                                            <li><a class="dropdown-item" href="/account/signin">Вхід</a></li>
-                                            <li></li><a class="dropdown-item" href="/account/signup">Реєстрація</a></li>
+                                            <li><a class="dropdown-item" id="signin" href="/account/signin">Вхід</a></li>
+                                            <li><a class="dropdown-item" id="signup" href="/account/signup">Реєстрація</a></li>
                                         {% else %}
                                             <li><a class="dropdown-item" href="/account/profile">Профайл</a></li>
                                             <li><a class="dropdown-item" href="/account/exit">Вихід</a></li>
@@ -67,5 +67,6 @@
             </div>
         </div>
     </header>
+    
     <script src="{% static 'js/header.js' %}"></script>
 

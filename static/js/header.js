@@ -30,8 +30,13 @@ $(document).ready(() => {
     $('.shopping-cart-count span#c-count').text(count);
     // Delete cart item
     $('button.delete').click((e) => {
-    
         console.log($(e.Target).parent().attr());
-    })
+    });
+
+    // Login and signup
+    //$('#signup').on('click', (e) => {
+    //    e.preventDefault();
+    //    $('#modal-signup').modal('show');
+    //});
 
 })
