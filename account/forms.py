@@ -27,8 +27,12 @@ class SignUpForm(UserCreationForm):
         strip=False,
     )
 
+    def __init__(self, *args, **kwargs):
+        super(SignUpForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs["class"] = "form-control"
 
     class Meta:
         model = User
-        fields = ('username', "email", "first_name", "last_name")
+        fields = ('username', 'email', 'first_name', 'last_name')
         labels = { 'username': 'Номер телефону*' }
