@@ -7,6 +7,16 @@
 
     <!--================logon_part Area =================-->
     <section class="login_part padding_top">
+        {% if messages %}
+        <div class="alert alert-dismissible" role="alert">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8 col-md-8">
@@ -27,12 +37,32 @@
                                         </button>
                                     </div>
                                 {% endif %}
-                                {% for field in form %}
                                 <div class="col-md-6 form-group mt-3">
-                                    <span>{{ field.label }}</span><br>
-                                    {{ field }}
+                                    <span>Номер телефону:</span><br/>
+                                    <input type="text" class="form-control" id="id_username" name="username" 
+                                            placeholder="Формат: 0xx-xxx-xxxx" required/>
                                 </div>
-                                {% endfor %}                                
+                                <div class="col-md-6 form-group mt-3">
+                                    <span>Електрона адреса:</span><br/>
+                                    <input type="email" class="form-control" id="id_email" name="email" required />
+                                </div>
+                                <div class="col-md-6 form-group mt-3">
+                                    <span>Ім'я:</span><br/>
+                                    <input type="text" class="form-control" id="id_first_name" name="first_name" required />
+                                </div>
+                                <div class="col-md-6 form-group mt-3">
+                                    <span>Прізвище:</span><br/>
+                                    <input type="text" class="form-control" id="id_last_name" name="last_name" />
+                                </div>
+                                <div class="col-md-6 form-group mt-3">
+                                    <span>Пароль:</span><br/>
+                                    <input type="password" class="form-control" id="id_password1" name="password1"  required />
+                                </div>
+                                <div class="col-md-6 form-group mt-3">
+                                    <span>Повторіть пароль:</span><br/>
+                                    <input type="password" class="form-control" id="id_password2" name="password2"  required />
+                                </div>
+                                <input type="hidden" name="next" value="{{ request.path|urlencode }}">                           
                                 <div class="form-group">
                                     <button type="submit" value="submit" class="btn_3">Реєстрація</button>
                                 </div>
@@ -108,24 +138,24 @@
             $(function() {
                 $('.reg-form').validate({
                     rules: {
-                        f_name: { required: true, minlength: 2 },
-                        l_name: { required: false, minlength: 2 },
+                        first_name: { required: true, minlength: 2 },
+                        last_name: { required: false, minlength: 2 },
                         password1: { required: true,  minlength: 8 },
                         password2: { required: true, minlength: 8, equalTo: "#id_password1" },
                         username: { required: true, minlength: 12 },
                         email: { required: true, email: true }
                     },
                     messages: {
-                        f_name: {
+                        first_name: {
                             required: "у вас же є <strong>Ім\'я</strong>, чи не так?",
                             minlength: "Не менше ніж <strong>2</strong> літери"
                         },
-                        l_name: {
+                        last_name: {
                             minlength: "Не менше ніж <strong>2</strong> літери"
                         },
                         username: {
                             required: "Ну ж, у вас є номер телефону, чи не так?",
-                            minlength: "Формат: xxx-xxx-xxxx"
+                            minlength: "Формат: 0xx-xxx-xxxx"
                         },
                         email: {
                             required: "намає E-mail - не буде спілкування"

@@ -7,8 +7,9 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.http import JsonResponse
 from django.utils.encoding import force_bytes, force_str
 from django.core.mail import send_mail
-
-from .forms import SignUpForm
+from django.contrib import messages
+"""
+from .forms import SignUpForm, LoginForm
 from .tokens import account_activation_token
 
 
@@ -17,7 +18,7 @@ def activation_sent(request):
 
 
 def activate(request, uidb64, token):
-    try:
+   try:
         uid = force_str(urlsafe_base64_decode(uidb64))
         user = User.objects.get(pk=uid)
     except (TypeError, ValueError, OverflowError, User.DoesNotExist):
@@ -29,9 +30,9 @@ def activate(request, uidb64, token):
         user.save()
         login(request, user)
         return redirect('home')
-    else:
-        return render(request, 'activation_invalid.html')
-
+   else:
+       return render(request, 'activation_invalid.html')
+"""
 
 def checkinput(request):
     if request.method == 'GET':
@@ -45,6 +46,36 @@ def checkinput(request):
 
 
 def signup(request):
+    if request.method == 'POST':
+        next = request.POST.get('next')
+        mail = request.POST.get('email')
+        new_user = User.objects.create_user(username=request.POST.get('username'),
+                                            password=request.POST.get('password1'),
+                                            email=mail,
+                                            first_name=request.POST.get('first_name'),
+                                            last_name=request.POST.get('last_name'))
+        if new_user is None:
+            messages.info(request, f'Вам відмолено у реєстрації!')
+        else:
+            url = f'http://127.0.0.1:8000/account/confirm?email={mail}'
+            subject = 'Підтвердження реєстрації на сайті LegChair'
+            body = f"""
+                <hr/>
+                <h3>Для підтвердження реєстрації перейдіть за посиланням:</h3>
+                <div>
+                    <a href="{url}">{url}</a>
+                </div>
+                <hr/>
+                <p>З повгою, <br/>адміністрація сайту <a href="www.legchair.ua">www.legchair.ua</a></p> """
+            if not send_mail(subject, '', 'Site Univer', [mail], fail_silently=False, html_message=body):
+                messages.info(request, f'Ваша пошта не дійсна!')
+            else:
+                messages.success(request, f'Вітаємо з успішною реєстрацією!\nНа вказаний Вами при реєстрації Email: {mail}<br>відправлено повідомлення для його підтвердження')
+                new_user.is_active = True
+                login(request, new_user)
+                return redirect(next)
+    return render(request, 'account/signup.html', {'page_title': 'Реєстрація', 'page': 4 })
+    """
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -74,32 +105,52 @@ def signup(request):
             print(form.errors)
     return render(request, 'account/signup.html', {
         'page_title': 'Реєстрація',
-        'form': SignUpForm(),
         'page': 4
     })
+"""
 
 
 def confirm(request):
     return render(request, 'account/confirm.html', {})
 
-
 def signin(request):
     if request.method == 'POST':
-        _login = request.POST.get('name')
-        _pass = request.POST.get('password')
-        user = authenticate(request, username=_login, password=_pass)
-        if user is None:
-            msg ='Користувач на знайдений!'
+        check_user = authenticate(
+                username=request.POST.get('username'),
+                password=request.POST.get('password')
+            )
+        if check_user is None:
+            messages.info(request, f'Користувача із таким номером телефону не знайдено!')
         else:
-            msg ='Ви успішно авторизовані!'
-            login(request, user)
-        return redirect('/')
-    
-    return render(request, 'account/signin.html', {
-        'page_title': 'Вхід',
-        'page': 4
-    })
+            login(request, check_user)
+            messages.success(request, f'Вітаємо Вас на нашому сайті!!!')
+            return redirect('/')
+    return render(request, 'account/signin.html', { 'page_title': 'Вхід', 'page': 4 })
 
+"""
+def sign_in(request):
+    form = LoginForm()
+    if request.method == 'POST':
+        if form.is_valid():
+            form = LoginForm(request.POST or None)
+            user = authenticate(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password'],
+            )
+            if not form.cleaned_data['remember_me']:
+                request.session.set_expiry(0)
+                request.session.modified = True
+            if user is None:
+                messages.info(request, f'Користувача із таким номером телефону не знайдено!')
+            else:
+                messages.success(request, f'Вітаємо Вас на нашому сайті!!!')
+                login(request, user)
+                return redirect('/')
+        else:
+            messages.info(request, f'Щось пішло не так!')
+            print(form.errors.as_data())
+    return render(request, 'account/signin.html', { 'page_title': 'Вхід', 'form': form, 'page': 4 })
+"""
 
 def exit(request):
     logout(request)

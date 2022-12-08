@@ -3,44 +3,70 @@
 {% block caption %}Сторінка входу{% endblock caption %}
 
 {% block content %}
+{% load static %}
 
     <!--================login_part Area =================-->
     <section class="login_part padding_top">
+        {% if messages %}
+        <div class="alert alert-dismissible" role="alert">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-4 col-md-4">
                     <div class="login_part_text text-center">
                         <div class="login_part_text_iner">
                             <h2>Вперше у нашому Магазині?</h2>
-                            <p>TЩось дуже цікаве</p>
+                            <p>Зареєструйтеся і перед Вами відкриється великий вибір унікальних виробів із натуральних матеріалів</p>
                             <a href="/account/signup" class="btn_3">Зареєструватися</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-8 col-md-8">
                     <div class="login_part_form">
                         <div class="login_part_form_iner">
-                            <h3>Вітаємо із поверненням! <br> Авторизуйтесь <i class="fa fa-hand-point-down"></i></h3>
-                            <form class="row contact_form" action="/account/signin" method="post" onsubmit="return true">
+                            <form class="row contact_form justify-content-center" action="/account/signin" method="POST">
+                                <div class="col-12">
+                                    <h3 class="text-center">Авторизація <i class="fa fa-hand-point-down"></i></h3>
+                                </div>
                                 {% csrf_token %}
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="name" name="name"
-                                        placeholder="E-mail або номер телефону" required />
+                                <div class="col-md-6 form-group">
+                                    <input type="text" class="form-control" id="id_username" name="username" 
+                                        placeholder="Номер телефону: 0xx-xxx-xxxx">
+                                    <span class="error"> </span>
                                 </div>
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="password" class="form-control" id="password" name="password"
-                                        placeholder="Пароль" required />
+                                <div class="col-md-6 form-group">
+                                    <input type="password" class="form-control" id="id_password" name="password" 
+                                        placeholder="Пароль">
                                 </div>
-                                <div class="col-md-12 form-group">
-                                    <div class="creat_account d-flex align-items-center">
-                                        <input type="checkbox" id="f-option" name="selector">
-                                        <label for="f-option">Запам'ятати мене</label>
-                                    </div>
-                                    <button type="submit" value="submit" class="btn_3">
-                                        Вхід
-                                    </button>
+                                <div class="col-md-6 form-group creat_account">
+                                    <input type="checkbox" id="id_option" name="selector">
+                                    <label for="id_option">Запам'ятати мене</label>
+                                </div>
+                                <div class="col-md-6 form-group creat_account">
                                     <a class="lost_pass" href="#">забули пароль?</a>
                                 </div>
+                                <div class="form-group">
+                                    <button type="submit" value="submit" class="btn_3">  Вхід  </button>
+                                </div>
+                                <input type="hidden" name="next" value="{{ request.GET.next }}">
+                                {% if form.errors %}
+                                <div class="alert alert-danger alert-dismissible" role="alert">
+                                    {% for error in field.errors %}
+                                    <div class="alert alert-{{ error.tags }}">{{ error }}</div>
+                                    {% endfor %}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                {% endif %}
                             </form>
                         </div>
                     </div>
@@ -49,5 +75,41 @@
         </div>
     </section>
     <!--================login_part end =================-->
+    <script src="{% static 'js/mask-phone-number.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+    
+            $('#id_username').usPhoneFormat({
+                format: 'xxx-xxx-xxxx',
+            });
+
+            $('#id_username').blur((e) => {
+                var whattocheck = 'username';
+                var input_val = e.target.value;
+                if (input_val != '') {
+                    $.ajax({
+                        type: 'GET',
+                        url: '/account/checkinput',
+                        data: {'whattocheck': 'username', 'input_val': input_val},
+                        dataType: 'json',
+                        success: (data) => {
+                            $('span.error').html('');
+                            if (!data.valid) {
+                                $('span.error').html('Такий номер не існує. Введіть інший');
+                                $('#id_username').val("").focus();
+                            }
+                        },
+                        error: (data) => {
+                            $('span.error').html('');
+                            console.log(data.responseJSON.errors)
+                        }
+                    });
+                } else {
+                    $("span.error").remove();
+                }
+            });
+
+        })
+    </script>
 
 {% endblock content %}

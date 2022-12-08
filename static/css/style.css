@@ -72,68 +72,12 @@ input:focus {
 
 /* line 44, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_common.scss */
 .single_padding_top {
-    padding-top: 140px !important;
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
-    /* line 44, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_common.scss */
-    .single_padding_top {
-        padding-top: 70px !important;
-    }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    /* line 44, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_common.scss */
-    .single_padding_top {
-        padding-top: 70px !important;
-    }
-}
-
-@media (max-width: 576px) {
-    /* line 44, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_common.scss */
-    .single_padding_top {
-        padding-top: 70px !important;
-    }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-    /* line 44, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_common.scss */
-    .single_padding_top {
-        padding-top: 100px !important;
-    }
+    padding-top: 70px !important;
 }
 
 /* line 64, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_common.scss */
 .padding_top {
-    padding-top: 100px;
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
-    /* line 64, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_common.scss */
-    .padding_top {
-        padding-top: 100px;
-    }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    /* line 64, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_common.scss */
-    .padding_top {
-        padding-top: 70px;
-    }
-}
-
-@media (max-width: 576px) {
-    /* line 64, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_common.scss */
-    .padding_top {
-        padding-top: 70px;
-    }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-    /* line 64, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_common.scss */
-    .padding_top {
-        padding-top: 70px;
-    }
+    padding-top: 70px;
 }
 /*--------------------------------------------------------------
 # Back to top button
@@ -2932,10 +2876,11 @@ ul {
     line-height: 40px;
     background: transparent;
     border: none;
+    z-index: 2;
     -webkit-transition: 0.2s all;
     transition: 0.2s all;
 }
-
+.single_product_item .single_product_text button i { z-index: 1; }
 /* line 93, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_product_list.scss */
 .single_product_item .single_product_text a i {
     font-size: 14px;
@@ -5318,11 +5263,11 @@ ul {
 .radion_btn input[type="radio"]:checked ~ label {
     color: #000;
 }
-
+.login_part { position: relative;}
 /* line 1884, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_product.scss */
 .login_part .login_part_text, .login_part .login_part_form {
-    padding: 40px 35px;
-    height: 500px;
+    padding: 35px 35px;
+    height: 400px;
     display: table;
 }
 
