@@ -1,18 +1,21 @@
 {% load static %}
 <div class="container" style="background-color: white;">
     <div class="shopping-cart">
+      {% if user.is_authenticated %}
       <div class="shopping-cart-header row">
         <div class="shopping-cart-count col-6">
-          <span><u>Товарів:</u> </span>
-          <span id="c-count"></span>
+          <span>Товарів:</span>
+          <span class="p-count"></span>
         </div>
         <div class="shopping-cart-total col-6">
-          <span>UAH: </span>
-          <span id="t-count">2,229.97</span>
+          <span class="p-amount"></span>
+          <span> грн.</span>
         </div>
       </div> <!--end shopping-cart-header -->
   
       <div class="shopping-cart-items">
+        <!-- {% if cart_items %}
+        {% for item in cart_items|dictsort:"name" %}
         <div class="product-widget">
           <a href="#" class="row">
             <div class="col-3">
@@ -21,63 +24,32 @@
             <div class="col-9">
               <div class="row">
                 <div class="col-12">
-                  <span class="item-name">Sony DSC-RX100M III</span>
+                  <span class="item-name">{{ item.name }}</span>
                 </div>
-                <div class="col-6">
-                  <span class="item-quantity">Кількість: 01</span>
-                </div>
-                <div class="col-6">
-                  <span class="item-price">849.99</span>
-                </div>
-              </div>
-            </div>
-          </a>
-          <button class="delete">x</button>
-        </div>
-        <div class="product-widget">
-          <a href="#" class="row">
-            <div class="col-3">
-              <img src="{% static 'img/cart.jpg' %}" alt="item1" />
-            </div>
-            <div class="col-9">
-              <div class="row">
-                <div class="col-12">
-                  <span class="item-name">Sony DSC-RX100M III</span>
-                </div>
-                <div class="col-6">
-                  <span class="item-quantity">Кількість: 01</span>
-                </div>
-                <div class="col-6">
-                  <span class="item-price">849.99</span>
+                <div class="col-10 text-right qnt-pr">
+                  <span class="item-quantity">01</span>
+                  <span> x </span>
+                  <span class="item-price">{{ item.price|floatformat:"2" }}</span>
+                  <span> грн.</span>
                 </div>
               </div>
             </div>
           </a>
-          <button class="delete">x</button>
+          <button class="delete" id="{{ item.id }}">x</button>
         </div>
-        <div class="product-widget">
-          <a href="#" class="row">
-            <div class="col-3">
-              <img src="{% static 'img/cart.jpg' %}" alt="item1" />
-            </div>
-            <div class="col-9">
-              <div class="row">
-                <div class="col-12">
-                  <span class="item-name">Sony DSC-RX100M III</span>
-                </div>
-                <div class="col-6">
-                  <span class="item-quantity">Кількість: 01</span>
-                </div>
-                <div class="col-6">
-                  <span class="item-price">849.99</span>
-                </div>
-              </div>
-            </div>
-          </a>
-          <button class="delete">x</button>
+        {% endfor %}
+        {% else %}
+        <div class="text-center"><p>Кошик порожній</p></div>
+        {% endif %} -->
+        <div class="text-center">
+          <a href="/cart" class="btn_1">Переглянути</a>
         </div>
+      {% else %}
+      <div class="purpose text-center">
+        <p>Кошик порожній</p>
+        <span>
+          Ознайомтеся з нашими <a href="#">Акціями</a>
+        </span>
       </div>
-      <div class="text-center">
-        <a href="#" class="btn_1">Checkout</a>
-      </div>
+      {% endif %}
     </div> <!--end shopping-cart -->

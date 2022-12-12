@@ -138,20 +138,13 @@
                         {% for p in paginate_products %}
                         <div class="col-lg-4 col-sm-6">
                             <div class="single_product_item">
-                                <div class="wish-div">
-                                    <div class="wishlist cursor-pointer">
-                                        <span>
-                                            <span class="icon-lg ti-heart"></span>
-                                        </span>
-                                    </div>
-                                </div>
                                 <a href="#"><img src="../media/{{ p.photo }}" alt=""></a>
                                 <div class="single_product_text">
                                     <h4>{{ p.name }}</h4>
                                     <h3>{{ p.price }}</h3>
-                                    <div class="cart-wish text-center">
-                                        <button class="add_cart" value="{{ p.id }}"><i class="fas fa-cart-plus"></i></button>
-                                        <button class="add_wish" value="{{ p.id }}"><i class="ti-heart"></i></button>
+                                    <div class="cart-wish text-center" id="{{ p.id }}">
+                                        <button class="add_cart"><i class="fas fa-cart-plus"></i></button>
+                                        <button class="add_wish"><i class="ti-heart"></i></button>
                                     </div>
                                 </div>
                             </div>

@@ -5,7 +5,7 @@ from .models import Category, Producer, Product, Color
 
 def index(request):
     all_products = Product.objects.all()
-    page_size = 3
+    page_size = 6
     paginator = Paginator(all_products, page_size)
     page_number = request.GET.get('page')
 
