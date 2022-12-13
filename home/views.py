@@ -28,3 +28,9 @@ def contact(request):
             'result': True if success else False,
             'page': 3
         })
+
+def blog(request):
+    return render(request, 'home/blog.html', {
+        'page_title': 'Новини',
+        'page': 0
+    })

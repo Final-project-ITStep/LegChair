@@ -4,67 +4,35 @@
 
     <!-- banner part start-->
     <section class="banner_part">
+        {% for p in all_categories.popular %}
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <div class="banner_slider owl-carousel">
+                        {% for p in all_products %}
                         <div class="single_banner_slider">
                             <div class="row">
                                 <div class="col-lg-5 col-md-8">
                                     <div class="banner_text">
                                         <div class="banner_text_iner">
-                                            <h1>Wood & Cloth
-                                                Sofa</h1>
-                                            <p>Incididunt ut labore et dolore magna aliqua quis ipsum
-                                                suspendisse ultrices gravida. Risus commodo viverra</p>
-                                            <a href="#" class="btn_2">Дивитись</a>
+                                            <h1>/static/img/{{ p.photo }}</h1>
+                                            <p></p>
+                                            <a href="store/index" class="btn_2">Дивитись</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="banner_img d-none d-lg-block">
-                                    <img src="{% static 'img/banner_img.png' %}" alt="">
-                                </div>
-                            </div>
-                        </div><div class="single_banner_slider">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-8">
-                                    <div class="banner_text">
-                                        <div class="banner_text_iner">
-                                            <h1>Cloth & Wood
-                                                Sofa</h1>
-                                            <p>Incididunt ut labore et dolore magna aliqua quis ipsum
-                                                suspendisse ultrices gravida. Risus commodo viverra</p>
-                                            <a href="#" class="btn_2">Дивитись</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="banner_img d-none d-lg-block">
-                                    <img src="{% static 'img/banner_img.png' %}" alt="">
-                                </div>
-                            </div>
-                        </div><div class="single_banner_slider">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-8">
-                                    <div class="banner_text">
-                                        <div class="banner_text_iner">
-                                            <h1>Wood & Cloth
-                                                Sofa</h1>
-                                            <p>Incididunt ut labore et dolore magna aliqua quis ipsum
-                                                suspendisse ultrices gravida. Risus commodo viverra</p>
-                                            <a href="#" class="btn_2">Дивитись</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="banner_img d-none d-lg-block">
-                                    <img src="{% static 'img/banner_img.png' %}" alt="">
+                                    <img src="{% static 'img/arm (1).png' %}" alt="">
                                 </div>
                             </div>
                         </div>
+                        {% endfor %}
                     </div>
                     <div class="slider-counter"></div>
                 </div>
             </div>
         </div>
+        {% endfor %}
     </section>
     <!-- banner part start-->
     <hr/>
@@ -85,7 +53,7 @@
                     <div class="single_feature_post_text">
                         <p>Преміальна якість</p>
                         <h3>Latest foam Sofa</h3>
-                        <a href="#" class="feature_btn">Перейти <i class="fas fa-play"></i></a>
+                        <a href="store/index" class="feature_btn">Перейти <i class="fas fa-play"></i></a>
                         <img src="{% static 'img/feature/feature_1.png' %}" alt="">
                     </div>
                 </div>
@@ -93,7 +61,7 @@
                     <div class="single_feature_post_text">
                         <p>Преміальна якість</p>
                         <h3>щось тут ...</h3>
-                        <a href="#" class="feature_btn">Перейти <i class="fas fa-play"></i></a>
+                        <a href="store/index" class="feature_btn">Перейти <i class="fas fa-play"></i></a>
                         <img src="{% static 'img/feature/feature_2.png' %}" alt="">
                     </div>
                 </div>
@@ -101,7 +69,7 @@
                     <div class="single_feature_post_text">
                         <p>Преміальна якість</p>
                         <h3>Latest foam Sofa</h3>
-                        <a href="#" class="feature_btn">Перейти <i class="fas fa-play"></i></a>
+                        <a href="store/index" class="feature_btn">Перейти <i class="fas fa-play"></i></a>
                         <img src="{% static 'img/feature/feature_3.png' %}" alt="">
                     </div>
                 </div>
@@ -109,7 +77,7 @@
                     <div class="single_feature_post_text">
                         <p>Преміальна якість</p>
                         <h3>Latest foam Sofa</h3>
-                        <a href="#" class="feature_btn">Перейти <i class="fas fa-play"></i></a>
+                        <a href="store/index" class="feature_btn">Перейти <i class="fas fa-play"></i></a>
                         <img src="{% static 'img/feature/feature_4.png' %}" alt="">
                     </div>
                 </div>
@@ -159,10 +127,10 @@
                         <h5>Розсилка</h5>
                         <h2>Підпишіться, щоб отримувати всі новини про акції та цікаві пропозиції</h2>
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Введіть ваш email"
+                            <input type="email" class="form-control" placeholder="Введіть ваш email"
                                 aria-label="Recipient's username" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <a href="#" class="input-group-text btn_2" id="basic-addon2">підписатись</a>
+                                <a href="#" class="input-group-text btn_2 newsletter-submit button-contactForm" id="basic-addon2">підписатись</a>
                             </div>
                         </div>
                     </div>
