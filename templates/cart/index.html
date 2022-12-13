@@ -28,8 +28,8 @@
                         <tr>
                             <th scope="col">Товар</th>
                             <th scope="col">Ціна</th>
-                            <th scope="col">Кількість</th>
-                            <th scope="col">Вартість</th>
+                            <th scope="col">Придбати</th>
+                            <th scope="col">Видалити</th>
                         </tr>
                     </thead>
                     <tbody class="table-group-devider">
@@ -42,20 +42,21 @@
                                 </div>
                             </td>
                             <td>
-                                <h5>{{ item.product.price|floatformat:"2" }}</h5>
+                                <h5 class="item-price">{{ item.product.price|floatformat:"2" }}</h5>
                             </td>
                             <td>
-                                <div class="product_count">
-                                    <span class="input-number-decrement"> <i class="ti-angle-down"></i></span>
-                                    <input class="input-number" type="text" value="1" min="1" max="10">
-                                    <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
+                                <div class="confirm-switch text-center">
+                                    <input type="checkbox" class="check" id="cart-{{ item.id }}" value="{{ item.id }}" checked>
+                                    <label for="cart-{{ item.id }}"></label>
                                 </div>
                             </td>
-                            <td><h5>$720.00</h5></td>
+                            <td>
+                                <button class="btn-del" value="{{ item.id }}"><i class="ti-trash"></i></batton>
+                            </td>
                         </tr>
                         {% endfor %}
                     <tr class="bottom_button">
-                        <td><a class="btn_1" href="#">Оновити кошик</a></td>
+                        <td><a class="btn_1" href="/cart">Оновити кошик</a></td>
                         <td></td>
                         <td></td>
                         <td>
@@ -66,64 +67,21 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td></td>
-                        <td>
-                        <h5>Subtotal</h5>
-                        </td>
-                        <td>
-                        <h5>$2160.00</h5>
-                        </td>
-                    </tr>
-                    <tr class="shipping_area">
-                        <td></td>
-                        <td></td>
-                        <td>
-                        <h5>Shipping</h5>
-                        </td>
-                        <td>
-                        <div class="shipping_box">
-                            <ul class="list">
-                            <li>
-                                <a href="#">Flat Rate: $5.00</a>
-                            </li>
-                            <li>
-                                <a href="#">Free Shipping</a>
-                            </li>
-                            <li>
-                                <a href="#">Flat Rate: $10.00</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">Local Delivery: $2.00</a>
-                            </li>
-                            </ul>
-                            <h6>
-                            Calculate Shipping
-                            <i class="fa fa-caret-down" aria-hidden="true"></i>
-                            </h6>
-                            <select class="shipping_select">
-                            <option value="1">Bangladesh</option>
-                            <option value="2">India</option>
-                            <option value="4">Pakistan</option>
-                            </select>
-                            <select class="shipping_select section_bg">
-                            <option value="1">Select a State</option>
-                            <option value="2">Select a State</option>
-                            <option value="4">Select a State</option>
-                            </select>
-                            <input type="text" placeholder="Postcode/Zipcode" />
-                            <a class="btn_1" href="#">Update Details</a>
-                        </div>
+                        <td><h4>Всього:</h4></td>
+                        <td colspan="2">
+                        <h4 class="item-price item-total text-center"></h4>
                         </td>
                     </tr>
                     </tbody>
                 </table>
                 <div class="checkout_btn_inner float-right">
-                    <a class="btn_1" href="#">Continue Shopping</a>
-                    <a class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a>
+                    <a class="btn_1" href="/store">Продовжити покупки</a>
+                    <a class="btn_3" id="bill-btn" href="">До оплати</a>
                 </div>
             </div>
         </div>
     </section>
+    <script src="{% static 'js/calc_cart.js' %}"></script>
     <!--================End Cart Area =================-->
 
 {% endblock %}

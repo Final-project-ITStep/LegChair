@@ -2872,7 +2872,8 @@ ul {
 }
 
 /* line 82, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_product_list.scss */
-.single_product_item .single_product_text button {
+.single_product_item .single_product_text button,
+.cart_inner button {
     position: relative;
     width: 40px;
     height: 40px;
@@ -2890,8 +2891,9 @@ ul {
     line-height: 26px;
     color: #000;
 }
-.single_product_item .single_product_text button:hover {
-    background-color: #E4E7ED;
+.single_product_item .single_product_text button:hover,
+.cart_inner button:hover {
+    background-color: #ecfdff;
     color: #D10024;
     border-radius: 50%;
 }
@@ -4332,7 +4334,7 @@ ul {
 .cart_inner .table tbody tr td .media .d-flex img {
     border: 1px solid #eeeeee;
     border-radius: 5px;
-    max-height: 100px;
+    max-height: 70px;
 }
 
 /* line 1077, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_product.scss */
@@ -4352,9 +4354,10 @@ ul {
     color: #2a2a2a;
     margin-bottom: 0;
 }
-.cart_inner .table tbody tr td h5:after {
+.cart_inner .table tbody tr td .item-price:after {
     content: ' грн.';
 }
+.cart_inner .item-total { font-weight: 600;}
 
 /* line 1094, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_product.scss */
 .cart_inner .table tbody tr td .product_count {
