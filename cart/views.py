@@ -10,6 +10,13 @@ def index(request):
         'page': 1
 	})
 
+def wish(request):
+	return render(request, 'cart/wish.html', {
+		'page_title': 'Уподобання',
+		'user_items': CardItem.objects.filter(user_id=request.user.id, cart_wish='add_wish'),
+        'page': 1
+	})
+
 
 def ajax_cart_delete(request):
 	del_item = CardItem.objects.get(id=request.GET['item'])
