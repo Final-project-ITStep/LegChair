@@ -142,9 +142,9 @@
                                 <div class="single_product_text">
                                     <h4>{{ p.name }}</h4>
                                     <h3>{{ p.price }}</h3>
-                                    <div class="cart-wish text-center">
-                                        <button class="add_cart" value="{{ p.id }}"><i class="fas fa-cart-plus"></i></button>
-                                        <button class="add_wish" value="{{ p.id }}"><i class="ti-heart"></i></button>
+                                    <div class="cart-wish text-center" id="{{ p.id }}">
+                                        <button class="add_cart"><i class="fas fa-cart-plus"></i></button>
+                                        <button class="add_wish"><i class="ti-heart"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -193,5 +193,30 @@
         <!--/End Modal 1 -->
     </section>
     <script src="{% static 'js/store.js' %}"></script>
+    <style>
+        .wish-div {
+            position: absolute;
+            top: 4.6 rem;
+            right: 1.6 rem;
+            z-index: 2;
+        }
+        .wish-div .wishlist {
+            background-color: var(--color-white);
+            border-radius: 50%;
+        }
+        .cursor-pointer {
+            cursor: pointer!important;
+        }
+        .wish-div .icon-lg {
+            display: flex;
+            width: 4 rem;
+            height: 4 rem;
+            border: 1px solid var(--color-gray-90);
+            border-radius: 50%;
+            color: var(--color-very-light-gray);
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
     <!--================End Category Product Area =================-->
 {% endblock %}

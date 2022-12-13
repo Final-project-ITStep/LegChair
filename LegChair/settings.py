@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import mimetypes
+import os
 
 # налаштування JavaScript
 mimetypes.add_type('application/javascipt', '.js', True)
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 	'cart',
 	'wish',
 	'account',
+	'orders',
 ]
 
 MIDDLEWARE = [
@@ -82,7 +84,7 @@ WSGI_APPLICATION = 'LegChair.wsgi.application'
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.sqlite3',
-		'NAME': BASE_DIR / 'db.sqlite3',
+		'NAME': str(os.path.join(BASE_DIR, "db.sqlite3")),
 	}
 }
 
@@ -129,6 +131,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST_USER = '5cb7fe61a325d5'
-EMAIL_HOST_PASSWORD = '0bcdd32a0f28ce'
+EMAIL_HOST_USER = 'cc192418f816a4'
+EMAIL_HOST_PASSWORD = '0fb4d4d6047f07'
 EMAIL_PORT = '2525'
+
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30

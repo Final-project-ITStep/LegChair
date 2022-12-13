@@ -6,8 +6,15 @@ from .models import CardItem
 def index(request):
 	return render(request, 'cart/index.html', {
 		'page_title': 'Управління Кошиком',
-		'user_items': CardItem.objects.filter(user_id=request.user.id, cart_wish='cart'),
-        'page': 2
+		'user_items': CardItem.objects.filter(user_id=request.user.id, cart_wish='add_cart'),
+        'page': 1
+	})
+
+def wish(request):
+	return render(request, 'cart/wish.html', {
+		'page_title': 'Уподобання',
+		'user_items': CardItem.objects.filter(user_id=request.user.id, cart_wish='add_wish'),
+        'page': 1
 	})
 
 
@@ -21,12 +28,10 @@ def ajax_cart_delete(request):
 
 
 def select_all(uid) -> dict:
-	user_items = CardItem.objects.filter(user_id=uid)   # .order_by('cart_wish')
-	amount_c = 0.0
-	amount_w = 0.0
-	count_c = 0
+	user_items = CardItem.objects.filter(user_id=uid)
+	amount_c, amount_w, count_c = 0.0, 0.0, 0
 	for item in user_items:
-		if item.cart_wish == 'cart':
+		if item.cart_wish == 'add_cart':
 			amount_c += item.product.price
 			count_c += 1
 		else:
