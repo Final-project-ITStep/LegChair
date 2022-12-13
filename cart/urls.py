@@ -8,4 +8,5 @@ urlpatterns = [
 	path('ajax_cart_delete', ajax_cart_delete),
     path('', index),
     path('index', index),
+    path('wish', wish),
 ]

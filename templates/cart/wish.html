@@ -1,0 +1,84 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+{% load static %}
+
+    <!-- breadcrumb start-->
+    <section class="breadcrumb breadcrumb_bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="breadcrumb_iner">
+                        <div class="breadcrumb_iner_item">
+                            <h2>{{ page_title }}</h2>
+                            <p><a href="/">Головна</a> <span>-</span>Уподобання</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb start-->
+    <!--================Cart Area =================-->
+    <section class="cart_area section_padding">
+        <div class="container">
+            <div class="cart_inner">
+                <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Товар</th>
+                            <th scope="col">Ціна</th>
+                            <th scope="col">До Кошика</th>
+                            <th scope="col">Видалити</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-devider">
+                        {% for item in user_items|dictsort:"product.name" %}
+                        <tr>
+                            <td>
+                                <div class="media">
+                                    <div class="d-flex"><img src="../media/{{ item.product.photo }}" alt="" /></div>
+                                    <div class="media-body"><p>{{ item.product.name }}</p></div>
+                                </div>
+                            </td>
+                            <td>
+                                <h5 class="item-price">{{ item.product.price|floatformat:"2" }}</h5>
+                            </td>
+                            <td>
+                                <button class="""><i class="fas fa-cart-plus"></i></button>
+                            </td>
+                            <td>
+                                <button class="btn-del" value="{{ item.id }}"><i class="ti-trash"></i></batton>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    <tr class="bottom_button">
+                        <td><a class="btn_1" href="/cart">Оновити кошик</a></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="cupon_text float-right">
+                                <a class="btn_1" href="#">+ Купон</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><h4>Всього:</h4></td>
+                        <td colspan="2">
+                        <h4 class="item-price item-total text-center"></h4>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="checkout_btn_inner float-right">
+                    <a class="btn_1" href="/store">Продовжити покупки</a>
+                    <a class="btn_3" id="bill-btn" href="">До оплати</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="{% static 'js/calc_cart.js' %}"></script>
+    <!--================End Cart Area =================-->
+
+{% endblock %}
