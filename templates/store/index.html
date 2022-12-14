@@ -141,10 +141,10 @@
                                 <a href="/store/detail/{{ p.id }}"><img src="../media/{{ p.photo }}" alt=""></a>
                                 <div class="single_product_text">
                                     <h4>{{ p.name }}</h4>
-                                    <h3>{{ p.price }}</h3>
+                                    <h3>{{ p.price|floatformat:"2g" }}</h3>
                                     <div class="cart-wish text-center" id="{{ p.id }}">
-                                        <button class="add_cart"><i class="fas fa-cart-plus"></i></button>
                                         <button class="add_wish"><i class="ti-heart"></i></button>
+                                        <button class="add_cart"><i class="fas fa-cart-plus"></i></button>
                                     </div>
                                 </div>
                             </div>
