@@ -18,3 +18,11 @@ def index(request):
         'paginate_products': paginator.get_page(page_number),
         'page': 1
     })
+
+
+def detail(request, item: str):
+    return render(request, 'store/detail.html', {
+        'item': Product.objects.get(id=item),
+        'page_title': 'Деталі товару',
+        'page': 1
+    })

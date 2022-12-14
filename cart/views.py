@@ -19,12 +19,13 @@ def wish(request):
 
 
 def ajax_cart_delete(request):
-	del_item = CardItem.objects.get(id=request.GET['item'])
-	del_item.delete()
+	CardItem.objects.get(id=request.GET['item']).delete()
+	return JsonResponse({ 'report': 'Товар видалений' })
 
-	return JsonResponse({
-		'report': 'Товар видалений із кошика'
-	})
+
+def ajax_wish_update(request):
+	CardItem.objects.filter(id=request.GET['item']).update(cart_wish='add_cart')
+	return JsonResponse({ 'report': 'Товар переміщений до Кошика' })
 
 
 def select_all(uid) -> dict:
