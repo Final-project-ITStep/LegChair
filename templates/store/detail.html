@@ -3,6 +3,9 @@
 {% load static %}
 
     <!-- breadcrumb start-->
+    <script>
+        $('<link/>', {rel: 'stylesheet', href:"{% static 'css/lightslider.min.css' %}"}).appendTo('head');
+    </script>
     <section class="breadcrumb breadcrumb_bg">
         <div class="container">
             <div class="row justify-content-center">
@@ -29,31 +32,37 @@
                             <div data-thumb="../../media/{{ item.photo }}">
                                 <img src="../../media/{{ item.photo }}" />
                             </div>
+                            <div data-thumb="../../media/{{ item.photo }}">
+                                <img src="../../media/{{ item.photo }}" />
+                            </div>
+                            <div data-thumb="../../media/{{ item.photo }}">
+                                <img src="../../media/{{ item.photo }}" />
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-5 col-xl-4">
                     <div class="s_product_text">
                         <h3>{{ item.name }}</h3>
-                        <h2>{{ item.price }} грн.</h2>
+                        <h2>{{ item.price|floatformat:"2g" }} грн.</h2>
                         <ul class="list">
                         <li>
                             <a class="active" href="#">
                             <span>Category</span> : {{ item.category.name }}</a>
                         </li>
                         <li>
-                            <a href="#"> <span>Availibility</span> : In Stock</a>
+                            <a href="#"> <span>Наявність</span> : на складі</a>
                         </li>
                         </ul>
                         <p>{{ item.about }}</p>
-                        <div class="card_area d-flex justify-content-between align-items-center">
-                        <div class="product_count">
-                            <span class="inumber-decrement"> <i class="ti-minus"></i></span>
-                            <input class="input-number" type="text" value="1" min="0" max="10">
-                            <span class="number-increment"> <i class="ti-plus"></i></span>
-                        </div>
-                        <a href="#" class="btn_3">add to cart</a>
-                        <a href="#" class="like_us"> <i class="ti-heart"></i> </a>
+                        <div class="card_area cart-wish d-flex justify-content-between align-items-center" id="{{ item.id }}">
+                            <div class="product_count">
+                                <span class="inumber-decrement"> <i class="ti-minus"></i></span>
+                                <input class="input-number" type="text" value="1" min="0" max="10">
+                                <span class="number-increment"> <i class="ti-plus"></i></span>
+                            </div>
+                            <button class="add_cart btn_3"><i class="fas fa-cart-plus"></i> у кошик</button>
+                            <button class="add_wish like_us"> <i class="ti-heart"></i> </button>
                         </div>
                     </div>
                 </div>
@@ -475,5 +484,5 @@
         </div>
     </section>
     <!--================End Product Description Area =================-->
-
+    <script src="{% static 'js/lightslider.min.js' %}"></script>
 {% endblock %}

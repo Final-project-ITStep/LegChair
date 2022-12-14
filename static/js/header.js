@@ -43,7 +43,7 @@ $(document).ready(() => {
     
     // Add cart item
     $('.cart-wish button').click((e) => {
-        var cart_wish = $(e.currentTarget).attr('class');
+        var cart_wish = $(e.currentTarget).attr('class').split(' ')[0];
         var product_id = $(e.currentTarget).parent().attr('id');
         var user_id = $('#user_id').val();
         // console.log('chair - ' + cart_wish + '-' + product_id + '-' + user_id);
@@ -56,10 +56,10 @@ $(document).ready(() => {
                 success: (data) => {
                     var what_to_add = cart_wish === 'add_cart' ? 0 : 1
                     var class_paste = cart_wish === 'add_cart' ? '.shopping-cart' : '.shopping-wish';
-                    console.log('.' + class_paste.substring(10) + ' i.g-count');
                     $(class_paste).find('.p-count').text(data.count[what_to_add]);
                     $(class_paste).find('.p-amount').text(data.amount[what_to_add]);
                     $('.' + class_paste.substring(10) + ' i.g-count').attr('data-content', data.count[what_to_add]);
+                    $('#myToast').toast('show').toast({delay: 30000}).find('span').text(' Товар додано!');
                 }
             });
         }

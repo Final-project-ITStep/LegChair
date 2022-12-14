@@ -2937,8 +2937,8 @@ ul {
 
 /* line 12, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_our_offer.scss */
 .our_offer h2 {
-    font-size: 50px;
-    line-height: 70px;
+    font-size: 40px;
+    line-height: 60px;
     font-weight: 700;
 }
 
@@ -3102,7 +3102,7 @@ ul {
 /* line 11, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_subscribe_area.scss */
 .subscribe_area h2 {
     font-weight: 700;
-    font-size: 48px;
+    font-size: 40px;
     line-height: 60px;
     margin: 35px 0 67px;
 }
@@ -5477,6 +5477,7 @@ ul {
     line-height: 56px;
     color: #7f7f7f;
     text-align: center;
+    border-color: transparent;
 }
 
 /* line 2042, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_product.scss */

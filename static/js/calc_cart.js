@@ -4,7 +4,7 @@ const calculate = () => {
     var selItemsList = '';
     if (page_id !== 'wish') {
         for (var c of $('.check:checked')) {
-            totalPrice += parseFloat($(c).parent().parent().parent().find('h5.item-price').text());
+            totalPrice += parseFloat($(c).parent().parent().parent().find('h5.item-price').text().replace(/,/g, ""));
             selItemsList += $(c).val() + ',';
         }
         selItemsList += totalPrice;
@@ -31,7 +31,8 @@ $(document).ready(() => {
             data: `item=${e.currentTarget.value}`,
             success: (data) => {
                 console.log(data.report);
-                window.location = $('#page_id').val().substring(6) == 'wish' ? '/cart/wish' : '/cart';
+                window.location = $('#page_id').val().substring(6) == 'wish' ? '/cart/wish' : '/cart';               
+                $('#myToast').toast('show').toast({delay: 30000}).find('span').text('Видалено');
             }
         });
     })
@@ -43,6 +44,7 @@ $(document).ready(() => {
             success: (data) => {
                 console.log(data.report);
                 window.location = '/cart/wish';
+                $('#myToast').toast('show').toast({delay: 30000}).find('span').text('Переміщено');
             }
         });
     })
