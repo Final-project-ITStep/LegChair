@@ -21,7 +21,9 @@
     <!--================Cart Area =================-->
     <section class="cart_area section_padding">
         <div class="container">
+            <input type="hidden" value="{{ request.path }}" id="page_id" />
             <div class="cart_inner">
+                {% if user_items %}
                 <div class="table-responsive">
                 <table class="table table-sm">
                     <thead class="table-light">
@@ -45,23 +47,14 @@
                                 <h5 class="item-price">{{ item.product.price|floatformat:"2" }}</h5>
                             </td>
                             <td>
-                                <button class="""><i class="fas fa-cart-plus"></i></button>
+                                <button class="btn-cart" value="{{ item.id }}"><i class="fas fa-cart-plus"></i></button>
                             </td>
                             <td>
                                 <button class="btn-del" value="{{ item.id }}"><i class="ti-trash"></i></batton>
                             </td>
                         </tr>
                         {% endfor %}
-                    <tr class="bottom_button">
-                        <td><a class="btn_1" href="/cart">Оновити кошик</a></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <div class="cupon_text float-right">
-                                <a class="btn_1" href="#">+ Купон</a>
-                            </div>
-                        </td>
-                    </tr>
+        
                     <tr>
                         <td></td>
                         <td><h4>Всього:</h4></td>
@@ -71,9 +64,11 @@
                     </tr>
                     </tbody>
                 </table>
-                <div class="checkout_btn_inner float-right">
+                {% else %}
+                <p class="text-center">Уподобання відсутні</p>
+                {% endif %}
+                <div class="checkout_btn_inner text-center">
                     <a class="btn_1" href="/store">Продовжити покупки</a>
-                    <a class="btn_3" id="bill-btn" href="">До оплати</a>
                 </div>
             </div>
         </div>

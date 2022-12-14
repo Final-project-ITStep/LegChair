@@ -138,7 +138,7 @@
                         {% for p in paginate_products %}
                         <div class="col-lg-4 col-sm-6">
                             <div class="single_product_item">
-                                <a href="#"><img src="../media/{{ p.photo }}" alt=""></a>
+                                <a href="/store/detail/{{ p.id }}"><img src="../media/{{ p.photo }}" alt=""></a>
                                 <div class="single_product_text">
                                     <h4>{{ p.name }}</h4>
                                     <h3>{{ p.price }}</h3>
