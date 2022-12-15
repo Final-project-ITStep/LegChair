@@ -46,7 +46,7 @@
         autoplayHoverPause: true,
         autoplayTimeout: 5000,
         nav: true,
-        navText: ["next", "previous"],
+        navText: ["попередній", "наступний"],
         responsive: {
           0: {
             margin: 15,
@@ -83,7 +83,7 @@
         autoplayHoverPause: true,
         autoplayTimeout: 5000,
         nav: true,
-        navText: ["next", "previous"],
+        navText: ["попередній", "наступний"],
         smartSpeed: 1000,
         responsive: {
           0: {
@@ -116,7 +116,7 @@
     //     autoplayHoverPause: true,
     //     autoplayTimeout: 5000,
     //     nav: true,
-    //     navText: ["next","previous"],
+    //     navText: ["попередній","наступний"],
     //     smartSpeed: 1000,
     //   });
     // }
@@ -147,7 +147,7 @@
       autoplayHoverPause: true,
       autoplayTimeout: 5000,
       nav: true,
-      navText: ["next", "previous"],
+      navText: ["попередній", "наступний"],
       smartSpeed: 1000,
       responsive: {
         0: {
@@ -236,7 +236,7 @@
     function makeTimer() {
 
       //		var endTime = new Date("29 April 2018 9:56:00 GMT+01:00");	
-      var endTime = new Date("27 Sep 2019 12:56:00 GMT+01:00");
+      var endTime = new Date("31 Dec 2022 23:59:59 GMT+02:00");
       endTime = (Date.parse(endTime) / 1000);
 
       var now = new Date();
@@ -259,10 +259,10 @@
         seconds = "0" + seconds;
       }
 
-      $("#days").html("<span>Days</span>" + days);
-      $("#hours").html("<span>Hours</span>" + hours);
-      $("#minutes").html("<span>Minutes</span>" + minutes);
-      $("#seconds").html("<span>Seconds</span>" + seconds);
+      $("#days").html("<span>Днів</span>" + days);
+      $("#hours").html("<span>Годин</span>" + hours);
+      $("#minutes").html("<span>Хвилин</span>" + minutes);
+      $("#seconds").html("<span>Секунд</span>" + seconds);
 
     }
   // click counter js
