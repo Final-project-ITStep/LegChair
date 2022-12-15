@@ -1,6 +1,6 @@
 /*Color Variables*/
 /* color: #ff3368;
-/**************** extend css start ****************/
+/**************** extend css start  Comfortaa Raleway****************/
 @import url('https://fonts.googleapis.com/css?family=Comfortaa:wght@300;400;500;600;700&display=swap');
 /* line 2, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_extends.scss */
 .btn_2, .form-contact .form-group .btn_1 i {
@@ -2424,7 +2424,7 @@ ul {
 .banner_part .single_banner_slider .banner_text {
     display: table;
     width: 100%;
-    height: 820px;
+    height: 500px;
 }
 
 /* line 11, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_banner.scss */
@@ -2436,14 +2436,14 @@ ul {
 @media (max-width: 991px) {
     /* line 7, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_banner.scss */
     .banner_part .single_banner_slider .banner_text {
-        height: 550px;
+        height: 450px;
     }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
     /* line 7, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_banner.scss */
     .banner_part .single_banner_slider .banner_text {
-        height: 650px;
+        height: 500px;
     }
 }
 
@@ -2530,10 +2530,10 @@ ul {
 /* line 72, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_banner.scss */
 .banner_part .owl-nav {
     position: absolute;
-    right: -20%;
+    right: 40%;
     bottom: 0;
-    padding: 35px 80px;
-    background-color: #fff;
+    padding: 10px 30px;
+    background-color: transparent;
 }
 
 @media (max-width: 991px) {
@@ -2560,6 +2560,8 @@ ul {
     text-transform: capitalize;
     font-weight: 700 !important;
 }
+.banner_part .owl-nav .owl-prev:hover,
+.banner_part .owl-nav .owl-next:hover { color: #ff3368 }
 
 /* line 94, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_banner.scss */
 .banner_part .owl-nav .owl-prev {
@@ -7518,7 +7520,7 @@ h6 {
 /* line 37, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_footer.scss */
 .footer_part .single_footer_part h4 {
     font-size: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     font-weight: 500;
 }
 
